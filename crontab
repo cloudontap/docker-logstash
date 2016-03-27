@@ -1,0 +1,2 @@
+0 1 * * * /opt/gosource/startup/geoip.sh
+*/5 * * * * /opt/gosource/startup/awslogs.sh
