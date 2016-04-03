@@ -7,7 +7,6 @@ input {
     codec => json
     type => docker
     delete => true
-    sincedb_path => "${ROOT}/cache/awslogs/.since_db_docker"
   }
   
 # AWS elb logs - they are stored per day so assume they are cached locally -
