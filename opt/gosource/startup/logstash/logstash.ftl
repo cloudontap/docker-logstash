@@ -7,14 +7,26 @@ input {
     codec => json
     type => docker
     delete => true
+    sincedb_path => "${ROOT}/cache/awslogs/.since_db_docker"
   }
   
-# AWS elb logs - they stored per day so assume they are cached locally
+# AWS elb logs - they are stored per day so assume they are cached locally -
+# there's a separate cron job to copy them from S3 and it typically keeps the
+# last 5 days (so go back that far in terms of checking last modified times)
+#
+# ELB configured to write logs every 5 minutes so discover/stat/close times set to 
+# pick up new files within a minute or so, but not bother to check for any 
+# missed data after about 5 minutes (most likely all data will be read when
+# file is first discovered but poll it a few times in case anything gets missed)
   file {
     path => "${ROOT}/cache/awslogs/elasticloadbalancing/**/*.log"
     sincedb_path => "${ROOT}/cache/awslogs/.since_db_elb"
     start_position => "beginning"
     type => elb
+    ignore_older => 18000
+    discover_interval => 60
+    stat_interval => 60
+    close_older => 300
   }
 }
 
