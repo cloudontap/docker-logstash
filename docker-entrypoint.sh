@@ -14,6 +14,7 @@ term_handler() {
 trap 'kill ${!}; term_handler' SIGTERM
 
 crontab /crontab
+sed -i '/pam_loginuid.so/d' /etc/pam.d/cron
 /etc/init.d/cron start
 
 

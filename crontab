@@ -1,2 +1,2 @@
-0 1 * * * /opt/gosource/startup/geoip.sh
-*/5 * * * * /opt/gosource/startup/awslogs.sh
+0 1 * * * /opt/gosource/startup/geoip.sh > /var/log/geoip.log 2>&1
+*/5 * * * * /opt/gosource/startup/awslogs.sh > /var/log/awslogs.log 2>&1
