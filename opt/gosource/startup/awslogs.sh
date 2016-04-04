@@ -7,6 +7,9 @@
 # Optionally control how many days of past logs are loaded initially
 # CACHE_AGE
 
+# Set path to keep cron happy
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
 # Create a directory to save the data 
 CACHE_ROOT="/project/logstash/cache/awslogs"
 mkdir --parents --mode=777 $CACHE_ROOT
