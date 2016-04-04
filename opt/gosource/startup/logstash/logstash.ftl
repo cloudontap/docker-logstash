@@ -22,7 +22,7 @@ input {
     sincedb_path => "${ROOT}/cache/awslogs/.since_db_elb"
     start_position => "beginning"
     type => elb
-    ignore_older => 18000
+    ignore_older => 432000
     discover_interval => 60
     stat_interval => 60
     close_older => 300
