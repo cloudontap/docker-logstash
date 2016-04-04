@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source /tmp/context
+
 # Assume the following environment variable passed in
 # LOGS = logs bucket name
 # REGION = logs bucket region

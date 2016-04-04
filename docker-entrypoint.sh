@@ -13,6 +13,11 @@ term_handler() {
 
 trap 'kill ${!}; term_handler' SIGTERM
 
+ENVFILE="/tmp/context"
+echo export LOGS=$LOGS > $ENVFILE
+echo export REGION=$REGION >> $ENVFILE
+echo export CACHE_AGE=$CACHE_AGE >> $ENVFILE
+
 crontab /crontab
 sed -i '/pam_loginuid.so/d' /etc/pam.d/cron
 /etc/init.d/cron start
