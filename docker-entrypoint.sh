@@ -10,7 +10,6 @@ term_handler() {
   exit 143;
 }
 
-
 trap 'kill ${!}; term_handler' SIGTERM
 
 ENVFILE="/tmp/context"
