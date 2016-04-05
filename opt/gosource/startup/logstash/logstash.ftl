@@ -17,15 +17,19 @@ input {
 # pick up new files within a minute or so, but not bother to check for any 
 # missed data after about 5 minutes (most likely all data will be read when
 # file is first discovered but poll it a few times in case anything gets missed)
+#
+# The following were being set but plugin seem to take forever to detect changes
+# so reverted to defaults
+#    discover_interval => 60
+#    stat_interval => 60
+#    close_older => 300
+
   file {
     path => "${ROOT}/cache/awslogs/elasticloadbalancing/**/*.log"
     sincedb_path => "${ROOT}/cache/awslogs/.since_db_elb"
     start_position => "beginning"
     type => elb
     ignore_older => 432000
-    discover_interval => 60
-    stat_interval => 60
-    close_older => 300
   }
 }
 
