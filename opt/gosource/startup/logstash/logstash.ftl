@@ -131,6 +131,9 @@ filter {
 }
 
 output {
+  stdout {
+  codec=>rubydebug
+  }
   elasticsearch {
     hosts => ["${ES}"]
     index => "logs-%{+YYYY.MM.dd}"
