@@ -1,4 +1,3 @@
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-
 0 1 * * * /opt/gosource/startup/geoip.sh > /var/log/geoip.log 2>&1
+0 2 * * * /opt/gosource/startup/index_cleanup.sh > /var/log/index_cleanup.log 2>&1
 */5 * * * * /opt/gosource/startup/awslogs.sh > /var/log/awslogs.log 2>&1
