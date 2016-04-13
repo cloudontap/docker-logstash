@@ -1,16 +1,14 @@
 #!/bin/bash
 
 set -e
-pid=0
 
 term_handler() {
   /etc/init.d/cron stop
-  kill -SIGTERM "$pid"
-  wait "$pid"
-  exit 143;
+  /etc/init.d/logstash stop
+  exit 0;
 }
 
-trap 'kill ${!}; term_handler' SIGTERM
+trap 'term_handler' SIGTERM SIGKILL
 
 ENVFILE="/tmp/context"
 echo export LOGS=$LOGS > $ENVFILE
@@ -37,7 +35,6 @@ if [ "$1" = 'logstash' ]; then
 fi
 
 exec "$@" &
-pid="$!"
 
 while true
 do
