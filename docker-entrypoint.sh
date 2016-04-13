@@ -13,7 +13,7 @@ trap 'term_handler' SIGTERM SIGKILL
 ENVFILE="/tmp/context"
 echo export LOGS=$LOGS > $ENVFILE
 echo export REGION=$REGION >> $ENVFILE
-echo export ES=$ES > $ENVFILE
+echo export ES=$ES >> $ENVFILE
 echo export CACHE_AGE=$CACHE_AGE >> $ENVFILE
 echo export INDEX_AGE=$INDEX_AGE >> $ENVFILE
 
