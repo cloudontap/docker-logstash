@@ -1,4 +1,4 @@
-FROM logstash:2.3
+FROM logstash:2.3.1-1
 
 # install plugin dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
