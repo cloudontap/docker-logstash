@@ -32,6 +32,10 @@ for i in $(seq 0 $[${CACHE_AGE}-1]); do
   aws --region ${REGION} s3 sync s3://${LOGS}/AWSLogs/${ACCOUNT}/elasticloadbalancing/${REGION}/${DATE}/ ${CACHE_ROOT}/elasticloadbalancing/${DATE}/
 done
 
-# Purge any older than a week
-find ${CACHE_ROOT} -mtime +${CACHE_AGE} -exec rm {} \;
+# Purge any files older than required
+find ${CACHE_ROOT} -type f -mtime +${CACHE_AGE} -delete
+
+# Purge any empty directories
+find ${CACHE_ROOT} -type d -empty -delete
+
 

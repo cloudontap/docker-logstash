@@ -2,8 +2,8 @@
 	"template": "logs-*",
 	"order": 1,
 	"settings": {
-		"number_of_shards": 1,
-		"number_of_replicas": 0,
+		"number_of_shards": ${SHARDS},
+		"number_of_replicas": ${REPLICAS},
 		"index.refresh_interval": "5s"
 	},
 	"mappings": {

@@ -30,5 +30,11 @@ VARIABLES="$VARIABLES -v ES=$ES"
 # Generate the logstash configuration for loading data to elasticsearch
 java -jar $GOSOURCE_STARTUP/gsgen.jar -i logstash.ftl -d $LOGSTASH_ROOT -o $LOGSTASH_ROOT/logstash.conf $VARIABLES
 
+VARIABLES=""
+VARIABLES="$VARIABLES -v SHARDS=${SHARDS:-1}"
+VARIABLES="$VARIABLES -v REPLICAS=${REPLICAS:-0}"
+
+# Generate the logs index mapping template
+java -jar $GOSOURCE_STARTUP/gsgen.jar -i logs_template.ftl -d $LOGSTASH_ROOT -o $LOGSTASH_ROOT/logs_template.json $VARIABLES
 
 
