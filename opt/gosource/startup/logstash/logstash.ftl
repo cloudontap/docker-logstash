@@ -4,6 +4,7 @@ input {
     bucket => "${LOGS}"
     prefix => "DOCKERLogs/pending"
     region => "${REGION}"
+    sincedb_path => "${ROOT}/s3/.since_db_docker"
     codec => json
     type => docker
     delete => true
