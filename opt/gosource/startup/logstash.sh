@@ -43,3 +43,5 @@ java -jar $GOSOURCE_STARTUP/gsgen.jar -i logs_template.ftl -d $LOGSTASH_ROOT -o 
 # Occasionally the current version of the logstash s3 input plugin misses files. If this gets fixed, then 
 # the window could be tightening but it doesn't hurt to leave it broad as files are deleted once processed.
 echo $(date --utc "+%Y-%m-%d 00:00:00 +0000" -d "1 year ago") > ${LOGSTASH_S3}/.since_db_docker
+chmod 777 ${LOGSTASH_S3}/.since_db_docker
+#
