@@ -4,7 +4,7 @@
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 # Create a directory to save the data 
-GEOIP_ROOT=/project/logstash/geoip
+GEOIP_ROOT=/product/logstash/geoip
 mkdir --parents --mode=755 ${GEOIP_ROOT}
 
 # Fetch the geo data 

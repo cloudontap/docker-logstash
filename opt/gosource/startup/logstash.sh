@@ -5,7 +5,7 @@ GOSOURCE_STARTUP=/opt/gosource/startup
 
 # Create the directory tree for use by the logstash container - better if mounted on the host 
 # Also means it is easy to see what configuration the container is running with
-LOGSTASH_ROOT=/project/logstash
+LOGSTASH_ROOT=/product/logstash
 LOGSTASH_CACHE=${LOGSTASH_ROOT}/cache
 LOGSTASH_GEOIP=${LOGSTASH_ROOT}/geoip
 LOGSTASH_S3=${LOGSTASH_ROOT}/s3
@@ -23,7 +23,7 @@ $GOSOURCE_STARTUP/awslogs.sh
 # Generate the logstash configuration file
 VARIABLES=""
 VARIABLES="$VARIABLES -v ROOT=$LOGSTASH_ROOT"
-VARIABLES="$VARIABLES -v PROJECT=$PROJECT"
+VARIABLES="$VARIABLES -v PRODUCT=$PRODUCT"
 VARIABLES="$VARIABLES -v CONTAINER=$CONTAINER"
 VARIABLES="$VARIABLES -v LOGS=$LOGS"
 VARIABLES="$VARIABLES -v REGION=$REGION"

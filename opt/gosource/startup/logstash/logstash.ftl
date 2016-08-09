@@ -85,9 +85,9 @@ filter {
   }
 
 # Add default component breakdown if not present
-  if ![project] {
+  if ![product] {
     mutate {
-      add_field => { "project" => "${PROJECT}" }
+      add_field => { "product" => "${PRODUCT}" }
     }
   }
   if ![container] {
@@ -113,13 +113,13 @@ filter {
   
 # Try and determine tier/component/subcomponent from the data
   grok {
-     overwrite => ["project", "container", "tier", "component", "subcomponent" ]
+     overwrite => ["product", "container", "tier", "component", "subcomponent" ]
      tag_on_failure => []
      match => [
-        "tag", "^docker.(?<project>[a-zA-Z0-9]+)\.(?<container>[a-zA-Z0-9]+)\.(?<tier>[a-zA-Z0-9]+)\.(?<component>[a-zA-Z0-9]+)\.(?<subcomponent>[a-zA-Z0-9]+)$",
+        "tag", "^docker.(?<product>[a-zA-Z0-9]+)\.(?<container>[a-zA-Z0-9]+)\.(?<tier>[a-zA-Z0-9]+)\.(?<component>[a-zA-Z0-9]+)\.(?<subcomponent>[a-zA-Z0-9]+)$",
         "container_name", ".*-(?<tier>[a-zA-Z0-9]+)-(?<component>[a-zA-Z0-9]+)-(?<subcomponent>[a-zA-Z0-9]+)-[0-9a-fA-F]+$",
         "container_name", "ecs-(?<subcomponent>agent)$",
-        "elb", "^(?<project>[a-zA-Z0-9]+)-(?<container>[a-zA-Z0-9]+)-(?<tier>[a-zA-Z0-9]+)-(?<component>[a-zA-Z0-9]+)$"
+        "elb", "^(?<product>[a-zA-Z0-9]+)-(?<container>[a-zA-Z0-9]+)-(?<tier>[a-zA-Z0-9]+)-(?<component>[a-zA-Z0-9]+)$"
      ]
   }
   

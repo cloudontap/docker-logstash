@@ -13,7 +13,7 @@ source /tmp/context
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 # Create a directory to save the data 
-CACHE_ROOT="/project/logstash/cache/awslogs"
+CACHE_ROOT="/product/logstash/cache/awslogs"
 mkdir --parents --mode=777 $CACHE_ROOT
 
 # How many days of history do we want including today
